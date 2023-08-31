@@ -9,11 +9,17 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    darkMode: 'class',
+
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': '#fe4068',
+                'secondary': '#4195f8'
+            }
         },
     },
 
