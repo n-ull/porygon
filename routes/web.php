@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +13,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/profile/{username}', function ($username){
-    return view('profile.public', ['user' => User::where('username', $username)->firstOrFail()]);
-});
+Route::get('/profile/{username}', [ProfileController::class, 'visit'])->name('profile.visit');
 
 /*
 |---------------------------------------------------------------------------
