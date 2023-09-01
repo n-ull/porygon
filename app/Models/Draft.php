@@ -13,6 +13,7 @@ class Draft extends Model
         'title',
         'slug',
         'description',
+        'content',
         'published',
         'category_id',
         'user_id',

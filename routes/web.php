@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DraftController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::get('/profile/{username}', [ProfileController::class, 'visit'])->name('profile.visit');
+Route::get('/project/{draft:slug}', [DraftController::class, 'show'])->name('draft.show');
 
 /*
 |---------------------------------------------------------------------------
@@ -27,9 +29,12 @@ Route::get('/profile/{username}', [ProfileController::class, 'visit'])->name('pr
 |
 */
 Route::middleware('auth')->group(function () {
+    Route::resource('draft', DraftController::class)->except('show');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+/* Auth Routes (Login and Register) */
 require __DIR__.'/auth.php';

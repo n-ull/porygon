@@ -12,7 +12,9 @@ class DraftController extends Controller
      */
     public function index()
     {
-        //
+        $drafts = Draft::where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc');
+        return view('draft.index', compact('drafts'));
     }
 
     /**
@@ -20,7 +22,7 @@ class DraftController extends Controller
      */
     public function create()
     {
-        //
+        return view('draft.create');
     }
 
     /**
