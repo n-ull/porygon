@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\UserRole;
 use App\Enums\UserType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', UserType::getValues())->default(UserType::User)->after('email');
+            $table->enum('role', UserType::getValues())
+            ->default(UserType::User)
+            ->after('email');
         });
     }
 

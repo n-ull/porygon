@@ -27,7 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('Porygon Code [Admin Panel]')
             ->path('admin')
             ->colors([
-                'primary' => Color::Red,
+                'primary' => '#fe4068',
+                'secondary' => '#4195f8'
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
