@@ -24,6 +24,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->id('admin')
+            ->brandName('Porygon Code [Admin Panel]')
             ->path('admin')
             ->colors([
                 'primary' => Color::Red,

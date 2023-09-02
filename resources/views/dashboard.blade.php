@@ -10,10 +10,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @auth
-                    {{ __("You're logged in!") }}
+                        {{ __("You're logged in!") }} <br />
+                        <p>Your role is {{ auth()->user()->role }}</p>
                     @endauth
                     @guest
-                    {{ __("You're not logged in!") }}
+                        {{ __("You're not logged in!") }}
                     @endguest
 
                 </div>
