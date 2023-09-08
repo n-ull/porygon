@@ -8,6 +8,7 @@ use App\Enums\UserType;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,6 +55,16 @@ class User extends Authenticatable implements FilamentUser
         return $this->role->is(UserType::Admin);
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->role->is(UserType::Admin);
+    }
+
+    public function drafts(): HasMany
+    {
+        return $this->hasMany(Draft::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -86,4 +97,9 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
         'role' => UserType::class
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
 }
