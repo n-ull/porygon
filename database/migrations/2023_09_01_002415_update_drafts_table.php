@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('drafts', function (Blueprint $table) {
             $table->string('content', 2048)->after('description');
+            $table->string('thumbnail')->after('content')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('drafts', function (Blueprint $table) {
             $table->dropColumn('content');
+            $table->dropColumn('thumbnail');
         });
     }
 };
