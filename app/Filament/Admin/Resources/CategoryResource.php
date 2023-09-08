@@ -18,8 +18,6 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     protected static ?string $navigationGroup = 'Drafts';
 
-    
-
     public static function form(Form $form): Form
     {
         return $form
@@ -29,6 +27,7 @@ class CategoryResource extends Resource
                     ->required(),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
