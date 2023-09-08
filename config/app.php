@@ -18,6 +18,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'drafts.max_drafts_per_user' => 5,
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -83,7 +85,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -185,6 +187,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Markdown' => Illuminate\Mail\Markdown::class
     ])->toArray(),
 
 ];
