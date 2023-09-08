@@ -19,9 +19,9 @@ class DraftFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'title' => $this->faker->words(2),
+            'title' => $this->faker->sentence(3),
             'description' => $this->faker->sentence(),
-            'slug' => $this->faker->slug(),
+            'slug' => $this->faker->unique()->slug(),
             'content' => $this->faker->paragraphs(3, true),
         ];
     }

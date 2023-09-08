@@ -18,5 +18,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Yoru Saurio',
+            'username' => 'Yoru',
+            'email' => 'test@example.com',
+            'role' => 'admin',
+        ]);
+
+        \App\Models\Category::factory()->create([
+            'name' => 'GBA',
+            'slug' => 'gba'
+        ]);
+        \App\Models\Category::factory()->create([
+            'name' => 'RPG Maker',
+            'slug' => 'rpg-maker'
+        ]);
     }
 }
