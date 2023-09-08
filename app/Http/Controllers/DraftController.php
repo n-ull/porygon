@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDraft;
 use App\Models\Draft;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,7 @@ class DraftController extends Controller
      */
     public function index()
     {
-        $drafts = Draft::where('user_id', auth()->id())
-            ->orderBy('created_at', 'desc');
+        $drafts = Draft::all();
         return view('draft.index', compact('drafts'));
     }
 
@@ -28,9 +28,19 @@ class DraftController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDraft $request)
     {
-        //
+        $validated = $request->validated();
+
+        Draft::create([
+            'user_id' => auth()->id(),
+            'title' => $validated->title,
+            'description' => $validated->description,
+            'slug' => \Str::slug($validated->title) . '-' . \Str::random(4),
+            'content' => $request->content,
+        ]);
+
+        return redirect('/draft')->with('success', 'Draft created.');
     }
 
     /**
@@ -38,7 +48,9 @@ class DraftController extends Controller
      */
     public function show(Draft $draft)
     {
-        //
+        $this->authorize('view', $draft);
+
+        return view('draft.show', compact('draft'));
     }
 
     /**
