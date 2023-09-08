@@ -1,27 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Draft Index') }}
+            {{ __('My Drafts') }}
         </h2>
     </x-slot>
 
-    <div>
-        <x-box>
-            @forelse ($drafts as $draft)
-                <div class="flex justify-between">
-                    <div>
-                        <a href="{{ route('draft.show', $draft) }}" class="text-blue-500 hover:underline">
-                            {{ $draft->title }}
-                        </a>
+    <div class="max-w-7xl mx-auto mt-4">
+        <x-game-collection :drafts="$drafts">
+            @if (count($drafts) != 5)
+                <a href="{{ route('draft.create') }}">
+                    <div
+                        class="flex flex-col border-4 border-dashed rounded-md items-center justify-center h-full min-h-[460px] scale-95 cursor-pointer hover:bg-gray-200/20 transition-colors dark:border-gray-800 dark:hover:bg-gray-700/10">
+                        <x-heroicon-o-plus-circle class="text-center rounded-full w-20 h-20 text-gray-200 dark:text-gray-800" />
                     </div>
-                </div>
-            @empty
-                <div class="text-center">
-                    <p class="text-gray-500 dark:text-gray-400">
-                        No drafts yet.
-                    </p>
-                </div>
-            @endforelse
-        </x-box>
+                </a>
+            @endif
+        </x-game-collection>
     </div>
 </x-app-layout>

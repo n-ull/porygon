@@ -7,18 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @auth
-                        {{ __("You're logged in!") }} <br />
-                        <p>Your role is {{ auth()->user()->role }}</p>
-                    @endauth
-                    @guest
-                        {{ __("You're not logged in!") }}
-                    @endguest
-
-                </div>
-            </div>
+            <x-game-collection :drafts='$drafts'></x-game-collection>
+            {{$drafts->links()}}
         </div>
     </div>
 </x-app-layout>

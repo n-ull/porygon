@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @auth
+                        <x-nav-link :href="route('draft.index')" :active="request()->routeIs('draft.index')">
+                            {{ __('My Drafts') }}
+                        </x-nav-link>
+                        @if (Auth::user()->isAdmin())
+                            <x-nav-link :href="route('filament.admin.pages.dashboard')">
+                                {{ __('Admin') }}
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
@@ -42,6 +52,8 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+
+                            <x-theme-switcher />
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -92,6 +104,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @auth
+                <x-responsive-nav-link :href="route('draft.index')" :active="request()->routeIs('draft.index')">
+                    {{ __('My Drafts') }}
+                </x-responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
