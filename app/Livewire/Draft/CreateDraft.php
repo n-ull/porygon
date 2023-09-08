@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Draft;
 
+use App\Models\Category;
 use App\Models\Draft;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -25,9 +26,20 @@ class CreateDraft extends Component implements HasForms
         return $form
             ->schema([
                 \Filament\Forms\Components\TextInput::make('title')
-                ->required(),
-                \Filament\Forms\Components\RichEditor::make('content')
-                ->required()
+                    ->required(),
+                \Filament\Forms\Components\TextInput::make('description')
+                    ->required(),
+                \Filament\Forms\Components\Textarea::make('content')
+                    ->placeholder('Write your draft here...')
+                    ->required(),
+                \Filament\Forms\Components\Select::make('category_id')
+                    ->name('Category')
+                    ->nullable()
+                    ->options(Category::all()->pluck('name', 'id')),
+                \Filament\Forms\Components\FileUpload::make('thumbnail')
+                    ->image()
+                    ->disk('local')
+                    ->directory('thumbnails')
             ])
             ->statePath('data')
             ->model(Draft::class);
@@ -36,6 +48,10 @@ class CreateDraft extends Component implements HasForms
     public function create(): void
     {
         $data = $this->form->getState();
+
+        dd($data);
+        $data['user_id'] = auth()->id();
+        $data['slug'] = \Str::slug($data['title']);
 
         $record = Draft::create($data);
 
