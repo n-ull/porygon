@@ -16,9 +16,9 @@
 
         </div>
         <div class="p-6">
-            <div class="grid grid-cols-2 justify-items-center">
+            <div class="grid grid-cols-2">
                 <div>{{ Markdown::parse($draft->content) }}</div>
-                <div>Images</div>
+                <div class="justify-self-center">Images</div>
             </div>
             <div class="mt-4">
                 @if ($draft->shards->count() > 0)

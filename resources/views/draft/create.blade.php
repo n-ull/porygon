@@ -11,20 +11,22 @@
                 @csrf
 
                 {{-- Section 1 --}}
-                <div class="grid grid-cols-3 space-x-4">
-                    <div class="flex border-2 border-dashed items-center justify-center">
-                        <input type="file" class="filepond">
+                <div class="grid grid-cols-3 space-x-4 h-40">
+                    <div class="flex border-2 border-dashed items-center rounded-md justify-center">
+                        <input type="file">
                     </div>
                     <div class="col-span-2 space-y-2">
                         {{-- Title --}}
-                        <x-text-input class="w-full" name="title" :value="old('title')" placeholder="Pokémon Pruebas"
+                        <x-text-input class="w-full h-11" name="title" :value="old('title')" placeholder="Pokémon Pruebas"
                             required />
 
                         {{-- Description --}}
-                        <x-textarea-input rows="4" class="w-full resize-none" placeholder="Ere un imbesil"
+                        <x-textarea-input class="w-full h-2/3 resize-none" placeholder="Ere un imbesil"
                             name="description" :value="old('description')" required></x-textarea-input>
                     </div>
                 </div>
+
+                <hr class="my-4">
 
                 {{-- Section 2 --}}
                 <div class="mt-4 space-y-2" id="editor">
