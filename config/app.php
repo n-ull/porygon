@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -187,7 +187,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Markdown' => Illuminate\Mail\Markdown::class
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class
     ])->toArray(),
 
 ];
