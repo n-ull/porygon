@@ -8,6 +8,7 @@
         "php": "^8.1",
         "bensampo/laravel-enum": "^6.6",
         "filament/filament": "3.0-stable",
+        "graham-campbell/markdown": "^15.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.23",
         "laravel/framework": "^10.10",
